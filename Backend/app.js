@@ -6,6 +6,7 @@ const {register}=require("./src/model/userSchema")
 const { loan } = require("./src/model/loanSchema")
 const { apply } = require("./src/model/requestSchema")
 const { save } = require("./src/model/savingSchema")
+const { apr } = require("./src/model/approve")
 
 
 const app=Express()
@@ -302,12 +303,12 @@ app.get("/seen",(req,res)=>{
         }
     )
 })
-app.post("/ulogin",async(req,res)=>{
+app.post("/ulogin", async(req, res)=>{
     const request=req.body
-    userSchema.findOne({username:request.username},(err,data)=>{
-        if(data){
-            if(data.password=request.pasword){
-                res.send({"success":true,data: data});
+    register.findOne({username:request.username}, (err,register)=>{
+        if(register){
+            if(register.password==request.password){
+                res.send({"success":true, register: register});
             }else{
                 res.send({"success":"Invalid Username or Password"});
             }
@@ -316,6 +317,90 @@ app.post("/ulogin",async(req,res)=>{
         }
     })
  }) 
+//request
+app.get("/viewrequest",(req,res)=>(
+    request.find(
+        (error,data)=>{
+            if(error){
+                res.send(error)
+                return
+            }
+            else(
+                res.send(data)
+            )
+        }
+    )
+))
+
+//approved
+
+app.get("/home",(req,res)=>{
+    register.find(
+        (error,data)=>{
+            if(error){
+                res.send(error)
+                return
+            }
+            else{
+                res.send(data)
+            }
+        }
+    )
+})
+
+app.post("/register",(req,res)=>{
+    const data=req.body
+    data.role="student"
+    console.log(data)
+    const ob=new register(data)
+    ob.save(
+        (error,data)=>{
+            if(error){
+                res.send(error)
+                return
+            }
+            else{
+                res.send(data)
+            }
+        }
+    )
+})
+
+
+app.post("/approveloan",(req,res)=>{
+    const data=req.body
+    data.role="student"
+    console.log(data)
+    const ob=new apr(data)
+    ob.save(
+        (error,data)=>{
+            if(error){
+                res.send(error)
+                return
+            }
+            else{
+                res.send(data)
+                console.log(data)
+                console.log("uploaded")
+            }
+        }
+    )
+})
+
+
+app.delete('/rejectloan/:id',function(req,res){
+    const id = req.params.id;
+    apply.findByIdAndDelete(id,(error,data)=>{
+       if(error){
+        res.send(error)
+       }else{
+        console.log("delete")
+        res.status(200).json({
+            msg:data
+        })
+       }
+    })
+})
 
 
 app.listen(3000,()=>{

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -16,9 +17,7 @@ export class AdduserComponent implements OnInit {
     username:"",
     password:""
   }
-  constructor(
-    private api:ApiService
-  ) { }
+  constructor(private api:ApiService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +26,7 @@ Adduser(){
   this.api.adduser(this.register).subscribe(
     (response)=>{
       if(!response.message){
+      this.router.navigate([''])
       alert("Successfully Added");
       console.log(response)
       }

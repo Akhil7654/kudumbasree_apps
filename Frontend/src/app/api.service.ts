@@ -66,9 +66,35 @@ viewsavings=(cash:any)=>{
 savehere=()=>{
   return this.http.get<any>("http://localhost:3000/seen")
 }
-ulogin=(save:any)=>{
-  return this.http.post<any>("http://localhost:3000/saving",save)
+ulogin(data3:any){
+  return this.http.post<any>("http://localhost:3000/ulogin",data3)
 }
+//need to approve
+
+addrequest=(loan:any)=>{
+  return this.http.post<any>("http://localhost:3000/approveloan",loan)
+}
+rejectrequest=(id:any)=>{
+return this.http.delete<any>("http://localhost:3000/rejectloan/"+id)
+}
+
+Viewrequest=()=>{
+  return this.http.get<any>("http://localhost:3000")
+}
+
+//approved
+
+
+addreq=(loan:any)=>{
+  return this.http.post<any>("http://localhost:3000/register",loan)
+}
+
+
+
+vrequest=(loan:any)=>{
+  return this.http.get<any>("http://localhost:3000/home")
+}
+
 
 
 }

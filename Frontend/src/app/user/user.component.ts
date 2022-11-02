@@ -14,22 +14,20 @@ export class UserComponent implements OnInit {
     username:"",
     password:""
   }
-  constructor(private api:ApiService,
-    private router:Router) { }
+  constructor(private api:ApiService, private router:Router) { }
 
   ngOnInit(): void {
   }
-  Ulogin(){
-    this.api.ulogin(this.register).subscribe(
-      (data) =>{
-      if(this.data.success===true){
+  Ulogin()
+  {
+    this.api.ulogin(this.register).subscribe((register) =>{
+      if(register.success === true){
         this.router.navigate(['/ul'])
       }else{
-        alert(data.success)
+        alert(register.success)
       }
       
     })
     
   }
-  data:any=[]
 }

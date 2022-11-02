@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -7,16 +8,10 @@ import { ApiService } from '../api.service';
   styleUrls: ['./loginadmin.component.css']
 })
 export class LoginadminComponent implements OnInit {
+username=""
+password=""
 
-  admin={
-    Username:"",
-    Password:""
-
-  }
-
-  constructor(
-    private api:ApiService
-  ) { }
+  constructor(private api:ApiService,private router:Router) { }
 
   ngOnInit(): void {
      // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -40,7 +35,7 @@ export class LoginadminComponent implements OnInit {
     })
 })()
   }
-  Addadmin(){
+ /* Addadmin(){
     console.log(this.admin)
     this.api.addadmin(this.admin).subscribe(
       (data:any)=>{
@@ -48,7 +43,14 @@ export class LoginadminComponent implements OnInit {
         console.log(data)
         window.location.reload()
       }
-    )
+    )}*/
+    Logadmin(){
+    if(this.username == "Admin" && this.password == "adminadmin"){
+     this.router.navigate(['/side'])
+    }
+    else{
+      alert("Invalid Credentials.")
+    }
   }
 
 }

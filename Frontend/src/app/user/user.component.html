@@ -1,20 +1,24 @@
 <div class="container">
-    <div class="row">
-        <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-            <form #login="ngForm" (ngSubmit)="Ulogin">
-            <div class="mb-3 row">
-                <label for="staticEmail" class="col-sm-2 col-form-label">Username:</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputText" [(ngModel)]="register.username">
-                </div>
-              </div>
-              <div class="mb-3 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Password:</label>
-                <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword"[(ngModel)]="register.password">
-                </div>
-              </div><button type="button" class="btn btn-primary"  routerLink="/ul" routerLinkActive="active-link">LOGIN</button>
-            </form>
-        </div>
-    </div>
+  <div class="row">
+      <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+          <div class="row g-10">
+              <form #userlogin="ngForm" (ngSubmit)="Ulogin()">
+                  <div class="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+                      <h1 align="center" style="background-color:#b64772 ;color:aliceblue;text-shadow:2px">USER LOGIN</h1>
+                      <label for="" class="form label">USERNAME</label>
+                      <input id="" type="text" class="form-control" [(ngModel)]="register.username" name="username">
+                      
+                      <label for="" class="form label">PASSWORD</label>
+                      <input id="" type="password" class="form-control" [(ngModel)]="register.password" name="password">
+                      <br>
+                      <button class="btn btn-primary">SIGN IN</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
 </div>
+
+
+<button type="button" class="btn btn-primary" routerLink="" style="margin-left: 120rem;margin-top: -2rem;">Go back</button>
+  

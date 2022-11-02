@@ -23,6 +23,7 @@ import { ViewuserComponent } from './viewuser/viewuser.component';
 import { SavingsComponent } from './savings/savings.component';
 import { ViewsavingsComponent } from './viewsavings/viewsavings.component';
 import { UpdatesavingsComponent } from './updatesavings/updatesavings.component';
+import { ApproveComponent } from './approve/approve.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { UpdatesavingsComponent } from './updatesavings/updatesavings.component'
     ViewuserComponent,
     SavingsComponent,
     ViewsavingsComponent,
-    UpdatesavingsComponent
+    UpdatesavingsComponent,
+    ApproveComponent
   ],
   imports: [
     BrowserModule,

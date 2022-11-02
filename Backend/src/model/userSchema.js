@@ -7,7 +7,7 @@ const userSchema = new schema({
     phoneno :{type: Number,required:true},
     email: {type: String,required:true},
     username : {type: String,required:true},
-    password : {type: String,required:true},
+    password : {type: String,required:true}
     
 })
 var register = Mongoose.model("userRegister",userSchema);
